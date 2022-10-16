@@ -2,7 +2,7 @@
 
 namespace VendingMachine
 {
-    internal class Fruit : Product
+    public class Fruit : Product
     {
         public Fruit(string name, int currentValue) : base(name, currentValue)
         {
@@ -11,7 +11,7 @@ namespace VendingMachine
 
         internal override void Examine()
         {
-            Console.WriteLine($"It is a yellow {Name} costs 10:-");
+            Console.WriteLine($"It is a yellow banana costs 10:-");
         }
 
         internal override void Use()

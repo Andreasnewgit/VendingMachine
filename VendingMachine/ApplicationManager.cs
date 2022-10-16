@@ -9,12 +9,18 @@ namespace VendingMachine
 {
     public class ApplicationManager : IVending
     {
+
         public ApplicationManager()
         {
             Products = new List<Product>();
             CreateProductList();
             _availableFunds = 0;
         }
+
+        Fruit fruit = new Fruit("Banan", 15);
+        Snacks snacks = new Snacks("Ostbagar", 25);
+        Soda soda = new("Cola", 20);
+        Diamond diamond = new("diamond", 1000);
 
         private int _availableFunds;
         private List<Product> Products { get; set; }
@@ -45,6 +51,7 @@ namespace VendingMachine
 
         public void PurchaseProduct()
         {
+
             ShowAll();
             Console.WriteLine("Type the Id for the product you wish to buy");
             int chosenId = int.Parse(Console.ReadLine());
@@ -59,6 +66,27 @@ namespace VendingMachine
                         _availableFunds -= item.CurrentValue;
                         ShowAvailableFunds();
                         Console.WriteLine("Thank you for buying");
+                        if (item.Id == 5) 
+                        {
+                            snacks.Examine();
+                            snacks.Use();
+                        }
+                        if (item.Id == 6)
+                        {
+                            soda.Examine();
+                            soda.Use();
+                        }
+                        if (item.Id == 7)
+                        {
+                            fruit.Examine();
+                            fruit.Use();
+                        }
+                        if (item.Id == 8)
+                        {
+                            diamond.Examine();
+                            fruit.Use();
+                        }
+
                         break;
                     }
                     else
@@ -148,7 +176,7 @@ namespace VendingMachine
         }
     }
 
-    internal abstract class Product
+    public abstract class Product
     {
         public Product(string name, int currentValue)
         {

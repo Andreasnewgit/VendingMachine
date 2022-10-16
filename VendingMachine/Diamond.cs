@@ -7,7 +7,6 @@ namespace VendingMachine
         {
         }
 
-
         internal override void Examine()
         {
             Console.WriteLine($"It is an expensive{Name}, too expensive for a real vending machine costs 10000:-");

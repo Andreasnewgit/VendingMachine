@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -72,11 +73,23 @@ namespace VendingMachine
         }
         public void InsertMoney()
         {
-            Console.Write("Insert money: ");
-            int amount = int.Parse(Console.ReadLine());
+            
+            int amount = 0;
+            try
+            {
+           
+                Console.Write("This Machine can only proccess the following ooins and bills 1, 5, 10, 20, 50, 100, 500, 1000" +
+                "\nPlease insert money in this format: ");
+                amount = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Input correct format");
+                InsertMoney();
+                return;
+            }
 
-
-            int[] allowedInput = new int[8] { 1, 5, 10, 20, 50, 100, 500, 1000 };
+        int[] allowedInput = new int[8] { 1, 5, 10, 20, 50, 100, 500, 1000 };
             var allowed = false;
             for (var i = 0; i < allowedInput.Length; i++)
             {
@@ -90,7 +103,9 @@ namespace VendingMachine
                 ShowAvailableFunds();
             }
             else {
-                Console.WriteLine("Wrong input please write 1, 5, 10, 20, 50, 100, 500, 1000 }");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Wrong input please input 1, 5, 10, 20, 50, 100, 500, 1000 }");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
 
